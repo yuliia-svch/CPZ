@@ -6,6 +6,8 @@ namespace SavchenkoYuliia.RobotChallenge
 {
 	public class Checker
 	{
+        private const double PERCENTAGE = 0.1;
+        private const int ENERGY_TO_LOSE = 30;
         public static bool IsStationAreaFree
             (Position stationPosition, Robot.Common.Robot currentRobot, IList<Robot.Common.Robot> robots)
         {
@@ -39,7 +41,7 @@ namespace SavchenkoYuliia.RobotChallenge
         public static bool IsProfitableToAttack(Robot.Common.Robot enemyRobot, Robot.Common.Robot movingRobot, int profit)
         {
             int distance = DistanceHelper.FindDistance(enemyRobot.Position, movingRobot.Position);
-            if ((enemyRobot.Energy * 0.1 - distance - 30 <= profit) || (enemyRobot.OwnerName == movingRobot.OwnerName))
+            if ((enemyRobot.Energy * PERCENTAGE - distance - ENERGY_TO_LOSE <= profit) || (enemyRobot.OwnerName == movingRobot.OwnerName))
                 return false;
             return enemyRobot == null ? false : true;
         }

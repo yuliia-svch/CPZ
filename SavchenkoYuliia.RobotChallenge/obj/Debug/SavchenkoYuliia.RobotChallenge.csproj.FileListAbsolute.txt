@@ -1,0 +1,7 @@
+E:\univer\5semester\КПЗ\YuliiaSavchenkoRobotChallenge\SavchenkoYuliia.RobotChallenge\bin\Debug\SavchenkoYuliia.RobotChallenge.dll
+E:\univer\5semester\КПЗ\YuliiaSavchenkoRobotChallenge\SavchenkoYuliia.RobotChallenge\bin\Debug\SavchenkoYuliia.RobotChallenge.pdb
+E:\univer\5semester\КПЗ\YuliiaSavchenkoRobotChallenge\SavchenkoYuliia.RobotChallenge\bin\Debug\Robot.Common.dll
+E:\univer\5semester\КПЗ\YuliiaSavchenkoRobotChallenge\SavchenkoYuliia.RobotChallenge\obj\Debug\SavchenkoYuliia.RobotChallenge.csprojAssemblyReference.cache
+E:\univer\5semester\КПЗ\YuliiaSavchenkoRobotChallenge\SavchenkoYuliia.RobotChallenge\obj\Debug\SavchenkoYuliia.RobotChallenge.csproj.CopyComplete
+E:\univer\5semester\КПЗ\YuliiaSavchenkoRobotChallenge\SavchenkoYuliia.RobotChallenge\obj\Debug\SavchenkoYuliia.RobotChallenge.dll
+E:\univer\5semester\КПЗ\YuliiaSavchenkoRobotChallenge\SavchenkoYuliia.RobotChallenge\obj\Debug\SavchenkoYuliia.RobotChallenge.pdb
