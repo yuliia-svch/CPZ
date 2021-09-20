@@ -1,12 +1,13 @@
 ﻿using System;
+using Robot.Common;
 
-namespace AlberdaRoman.RobotChallange
+namespace SavchenkoYuliia.RobotChallenge
 {
 	public class DistanceHelper
 	{
 		public static int FindDistance(Position a, Position b)
 		{
-			return Math.Abs(a.X - b.X) + Math.Abs(a.Y - b.Y);
+			return (int)(Math.Pow(a.X - b.X, 2) + Math.Pow(a.Y - b.Y, 2));
 		}
 	}
 }
