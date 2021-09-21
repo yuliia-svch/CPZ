@@ -60,32 +60,26 @@ namespace SavchenkoYuliia.RobotChallenge
             return new Position(a.X, b.Y);
         }
 
-        public static Position FindSmallerPartOfTheWay(Position a, Position b)
-        {
-            Position partOfTheWay = FindPartOfTheWay(a, b);
-            return FindPartOfTheWay(a, partOfTheWay);
-        }
-
         public static Position FindAvailablePositionToGo(Robot.Common.Robot movingRobot,
             IList<Robot.Common.Robot> robots, Map map, Position positionToGo, int energyToLeave)
         {
-            Position particle = FindPartOfTheWay(movingRobot.Position, positionToGo);
-            bool isParticleFree =
+            Position particle = positionToGo;
+            bool isParticleFree;
+            bool hasEnergyToMoveParticle;
+            int count = 0;
+            do
+            {
+                particle = FindPartOfTheWay(movingRobot.Position, particle);
+                isParticleFree =
                 Checker.IsCellFree(particle, movingRobot, robots);
-            bool hasEnergyToMoveParticle =
-                Checker.HasEnergyToGo(movingRobot, particle, energyToLeave);
-            if (isParticleFree && hasEnergyToMoveParticle)
-                return particle;
+                hasEnergyToMoveParticle =
+                Checker.HasEnergyToGo(movingRobot, particle, energyToLeave);               
+                if (count > 1) return null;
+                count++;
+            } while (!isParticleFree && !hasEnergyToMoveParticle);
 
-            Position smallerParticle = FindSmallerPartOfTheWay(movingRobot.Position, positionToGo);
-            bool isSmallerParticleFree =
-                Checker.IsCellFree(smallerParticle, movingRobot, robots);
-            bool hasEnergyToMoveSmallerParticle =
-                Checker.HasEnergyToGo(movingRobot, smallerParticle, energyToLeave);
-            if (isSmallerParticleFree && hasEnergyToMoveSmallerParticle)
-                return smallerParticle;
-
-            return null;
+            return particle;
+          
         }
 
         public static List<Robot.Common.Robot> FindEnemies(IList<Robot.Common.Robot> robots, string ownerName)

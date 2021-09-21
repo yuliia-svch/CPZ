@@ -7,7 +7,7 @@ namespace SavchenkoYuliia.RobotChallenge
     public class SavchenkoYuliiaAlgorithm : IRobotAlgorithm
     {
         public const int ROBOT_CREATION_LIMIT = 40;
-        public const int START_ATTACK = 15;
+        public const int START_ATTACK = 5;
         public int RoundNumber { get; set; }
         public string Author => "Savchenko Yuliia";
         public SavchenkoYuliiaAlgorithm()
@@ -30,25 +30,23 @@ namespace SavchenkoYuliia.RobotChallenge
                 List<Robot.Common.Robot> enemies = Finder.FindEnemies(robots, Author);
                 Robot.Common.Robot robotToAttack = Finder.FindRobotToAttack(enemies, currentRobot);
                 MoveCommand attackCommand =
-                    CreateAttackCommand(RoundNumber, numberOfMyRobots, 5, 15, 10, currentRobot, robotToAttack);
-
-                if (currentRobot.Energy == 0)
-                    return new CollectEnergyCommand();
-
+                    CreateAttackCommand(RoundNumber, numberOfMyRobots, START_ATTACK, 15, 5, currentRobot, robotToAttack);
+                if (RoundNumber > 30 && attackCommand != null)
+                    return attackCommand;
                 if (currentRobot.Energy >= 300 && numberOfMyRobots < 100)
                 {
                     return new CreateNewRobotCommand();
-                }              
+                }
+
+                if (currentRobot.Energy == 0)
+                    return new CollectEnergyCommand();
+                            
                 
                 if (stationPosition == null)
                 {
-                    return null;
-                }
-                else
-                {
                     if (attackCommand != null)
                         return attackCommand;
-                }
+                }              
 
                 if (stationPosition == currentRobot.Position)
                 {
@@ -66,7 +64,7 @@ namespace SavchenkoYuliia.RobotChallenge
                 else
                 {
                     Position positionToMoveToStation =
-                    Finder.FindAvailablePositionToGo(currentRobot, robots, map, stationPosition, 1);
+                    Finder.FindAvailablePositionToGo(currentRobot, robots, map, stationPosition, 1);                    
                     if (Checker.HasEnergyToGo(currentRobot, stationPosition, 1))
                         return new MoveCommand() { NewPosition = stationPosition };
                     if (positionToMoveToStation != null)

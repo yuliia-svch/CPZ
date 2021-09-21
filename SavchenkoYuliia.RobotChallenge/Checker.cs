@@ -1,5 +1,4 @@
-﻿using System;
-using Robot.Common;
+﻿using Robot.Common;
 using System.Collections.Generic;
 
 namespace SavchenkoYuliia.RobotChallenge
